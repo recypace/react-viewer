@@ -151,16 +151,30 @@ const scrollContentWrapper = (setting: EpubSettingState) => css`
 `;
 
 const pageContentWrapper = (setting: EpubSettingState, calculation: EpubCalculationState) => css`
+  /*
   column-width: ${SettingUtil.columnWidth(setting)}px;
   column-gap: ${SettingUtil.columnGap(setting)}px;
   column-fill: auto;
+  */
   height: 100%;
+  white-space: nowrap;
+ 
+  
   
   article {
+    column-width: ${SettingUtil.columnWidth(setting)}px;
+    column-gap: ${SettingUtil.columnGap(setting)}px;
+    column-fill: auto;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    white-space: initial;
+    /*
     -webkit-column-break-before: always;
     -webkit-column-break-after: always;
     -webkit-column-break-inside: auto;
     break-before: column;
+    */
   }
   article:last-child {
     padding-bottom: ${calculation.totalPage % 2 === 0 ? 0 : '50%'};
@@ -188,7 +202,7 @@ export const wrapper = (setting: EpubSettingState) => {
     width: ${clientWidth}px;
     height: ${clientHeight}px;
     margin: ${setting.containerVerticalMargin}px ${setting.containerHorizontalMargin + SettingUtil.contentPadding(setting)}px;
-    overflow: hidden;
+    /*overflow: hidden;*/
   `;
 };
 
